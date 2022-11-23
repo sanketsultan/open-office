@@ -16,6 +16,7 @@ provider "aws" {
 resource "aws_instance" "app_server" {
   ami           = "ami-830c94e3"
   instance_type = "t2.micro"
+  key_name = "terraform"
   user_data	= file("linux.sh")
 
   tags = {
