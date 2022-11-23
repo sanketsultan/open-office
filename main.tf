@@ -20,5 +20,9 @@ resource "aws_instance" "app_server" {
   tags = {
     Name = "open-office"
   }
-  user_data = file("/linux.sh")
+}
+variable "docker-image" {
+  type        = string
+  description = "name of the docker image to deploy"
+  default     = "vison91/office_spaces"
 }
