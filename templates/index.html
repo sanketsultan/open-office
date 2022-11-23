@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <title>Office Space Booking</title>
+  </head>
+  <body>
+    
+  <body>
+    
+    <div class="date-container">
+      <label>Pick a date:</label>
+      <input type="date" id="booking-date" name="booking-date"/>
+    </div>
+
+    <ul class="showcase">
+      <li>
+        <div class="seat"></div>
+        <small>N/A</small>
+      </li>
+
+      <li>
+        <div class="seat selected"></div>
+        <small>Selected</small>
+      </li>
+
+      <li>
+        <div class="seat occupied"></div>
+        <small>Occupied</small>
+      </li>
+    </ul>
+
+    <div class="container">
+      <!-- <div class="screen"></div> -->
+      <div id="rowid"></div>
+      <div class="row">
+        <div id="r1_a_s1" class="seat type-1"></div>
+        <div id="r1_a_s2" class="seat type-1"></div>
+        <div id="r1_a_s3" class="seat type-1"></div>
+        <div id="r1_a_s4" class="seat type-1"></div>
+        <div id="r1_b_s1" class="seat type-1"></div>
+        <div id="r1_b_s2" class="seat type-1"></div>
+        <div id="r1_b_s3" class="seat type-1"></div>
+        <div id="r1_b_s4" class="seat type-1"></div>
+      </div>
+      <div class="row">
+        <div class="table"></div>
+        <div class="table"></div>
+      </div>
+      <div class="row">
+        <div id="r2_a_s1" class="seat type-2"></div>
+        <div id="r2_a_s2" class="seat type-2"></div>
+        <div id="r2_a_s3" class="seat type-2"></div>
+        <div id="r2_a_s4" class="seat type-2 occupied"></div>
+        <div id="r2_b_s1" class="seat type-2 occupied"></div>
+        <div id="r2_b_s2" class="seat type-2"></div>
+        <div id="r2_b_s3" class="seat type-2"></div>
+        <div id="r2_b_s4" class="seat type-2"></div>
+      </div>
+      
+      <div class="row">
+        <div id="r3_a_s1" class="seat type-1"></div>
+        <div id="r3_a_s2" class="seat type-1"></div>
+        <div id="r3_a_s3" class="seat type-1"></div>
+        <div id="r3_a_s4" class="seat type-1"></div>
+        <div id="r3_b_s1" class="seat type-1"></div>
+        <div id="r3_b_s2" class="seat type-1"></div>
+        <div id="r3_b_s3" class="seat type-1 occupied"></div>
+        <div id="r3_b_s4" class="seat type-1 occupied"></div>
+      </div>
+      <div class="row">
+        <div class="table"></div>
+        <div class="table"></div>
+      </div>
+      <div class="row">
+        <div id="r4_a_s1" class="seat type-2"></div>
+        <div id="r4_a_s2" class="seat type-2"></div>
+        <div id="r4_a_s3" class="seat type-2"></div>
+        <div id="r4_a_s4" class="seat type-2"></div>
+        <div id="r4_b_s1" class="seat type-2"></div>
+        <div id="r4_b_s2" class="seat type-2"></div>
+        <div id="r4_b_s3" class="seat type-2"></div>
+        <div id="r4_b_s4" class="seat type-2"></div>
+      </div>
+
+      <div class="row">
+        <div id="r5_a_s1" class="seat type-1"></div>
+        <div id="r5_a_s2" class="seat type-1"></div>
+        <div id="r5_a_s3" class="seat type-1"></div>
+        <div id="r5_a_s4" class="seat type-1 occupied"></div>
+        <div id="r5_b_s1" class="seat type-1 occupied"></div>
+        <div id="r5_b_s2" class="seat type-1"></div>
+        <div id="r5_b_s3" class="seat type-1"></div>
+        <div id="r5_b_s4" class="seat type-1"></div>
+      </div>
+
+      <div class="row">
+        <div class="table"></div>
+        <div class="table"></div>
+      </div>
+
+      <div class="row">
+        <div id="r6_a_s1" class="seat type-2"></div>
+        <div id="r6_a_s2" class="seat type-2"></div>
+        <div id="r6_a_s3" class="seat type-2"></div>
+        <div id="r6_a_s4" class="seat type-2"></div>
+        <div id="r6_b_s1" class="seat type-2 occupied"></div>
+        <div id="r6_b_s2" class="seat type-2 occupied"></div>
+        <div id="r6_b_s3" class="seat type-2 occupied"></div>
+        <div id="r6_b_s4" class="seat type-2"></div>
+      </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+  </form>
+  </body>
+</html>
