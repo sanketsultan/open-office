@@ -5,12 +5,6 @@ pipeline {
         terraform 'terraform'
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Vikrant2691/terraform-jenkins.git']]])
-            }
-        }
         stage('Terraform Init') {
             steps {
                 sh label: '', script: 'terraform init'
