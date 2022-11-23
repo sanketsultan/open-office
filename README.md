@@ -1,5 +1,5 @@
 # Office Spaces
-This is a Office space booking Website 🍟
+This is a Office space booking Website :computer:
 
 
 ## Technologies
