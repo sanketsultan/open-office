@@ -1,21 +1,29 @@
 pipeline {
     agent any
-
-    tools {
+    
+     tools {
         terraform 'terraform'
     }
-
-        stage('Terraform Init') {
+    
+    stages {
+        stage('Checkout') {
             steps {
-                sh label: '', script: 'terraform init'
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sanketsultan/open-office.git']]])
+            }
+        }
+       stage('Terraform Init'){
+            steps{
+                sh label: '',script: 'terraform init'
             }
         }
 
-        stage('Terraform apply') {
-            steps {
+
+
+       stage('Terraform apply'){
+            steps{
                 echo "Terraform action from the parameter is --->${action}"
-                sh label: '', script: 'terraform ${action} --auto-approve'
+                sh label: '',script: 'terraform ${action} --auto-approve'
             }
         }
     }
-
+}
