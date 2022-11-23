@@ -1,26 +1,19 @@
-# base image  
-FROM python:3.8   
-# setup environment variable  
-ENV DockerHOME=/home/app/webapp  
+# start by pulling the python image
+FROM python:3.8-alpine
 
-# set work directory  
-RUN mkdir -p $DockerHOME  
+# copy the requirements file into the image
+COPY ./requirements.txt /app/requirements.txt
 
-# where your code lives  
-WORKDIR $DockerHOME  
+# switch working directory
+WORKDIR /app
 
-# set environment variables  
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1  
+# install the dependencies and packages in the requirements file
+RUN pip install -r requirements.txt
 
-# install dependencies  
-RUN pip install --upgrade pip  
+# copy every content from the local file to the image
+COPY . /app
 
-# copy whole project to your docker home directory. 
-COPY . $DockerHOME  
-# run this command to install all dependencies  
-RUN pip install -r requirements.txt  
-# port where the Django app runs  
-EXPOSE 8888  
-# start server  
-CMD ["python", "app.py"]
+# configure the container to run in an executed manner
+ENTRYPOINT [ "python" ]
+
+CMD ["app.py" ]
