@@ -4,8 +4,8 @@ This is a Office space booking Website :computer:
 
 ## Technologies
 1. Flask (Backend)
-3. CSS (Frontend)
-4. JavaScript (Client-Side)
+2. CSS (Frontend)
+3. HTML/JavaScript (Client-Side)
 
 
 ## To Run This Project
