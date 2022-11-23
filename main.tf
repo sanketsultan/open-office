@@ -20,4 +20,5 @@ resource "aws_instance" "app_server" {
   tags = {
     Name = "open-office"
   }
+  user_data = file("templates/ubuntu.sh")
 }
