@@ -19,7 +19,7 @@ resource "aws_instance" "app_server" {
   key_name = "terraform"
   user_data	= file("linux.sh")
   vpc_security_group_ids = [
-   aws_security_group.allow_ssh.id
+   Docker.id
   ]
   tags = {
     Name = "open-office"
