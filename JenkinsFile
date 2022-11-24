@@ -1,11 +1,11 @@
 pipeline {
     agent any
-    
-     tools {
+
+    tools {
         terraform 'terraform'
         maven 'maven'
     }
-    
+
     stages {
         // stage('Clone Repository'){
         //     steps{
@@ -17,16 +17,16 @@ pipeline {
                     steps {
                         checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sanketsultan/open-office.git']]])
                     }
-                }
-    //     stage('Build Project') {
-    //         // def mvnHome = tool name: '3.8.6', type: 'maven'
-    //         // withSonarQubeEnv('SonarQube'){
-    //         // sh '''${mvnHome}/bin/mvn package'''
-    //         // steps{
-    //         // sh '''mvn -B -DskipTests clean package'''
-    //         // }
-    //    // }
-    //     }
+        }
+        //     stage('Build Project') {
+        //         // def mvnHome = tool name: '3.8.6', type: 'maven'
+        //         // withSonarQubeEnv('SonarQube'){
+        //         // sh '''${mvnHome}/bin/mvn package'''
+        //         // steps{
+        //         // sh '''mvn -B -DskipTests clean package'''
+        //         // }
+        //    // }
+        //     }
         // stage('SonarQube analysis') {
         //     environment {
         //     SCANNER_HOME = tool 'Sonar'
@@ -46,23 +46,21 @@ pipeline {
         //     }
         // }
         // }
-        stage('Terraform Init'){
-            steps{
-                sh label: '',script: 'terraform init'
+        stage('Terraform Init') {
+            steps {
+                sh label: '', script: 'terraform init'
             }
         }
-        stage('Terraform Plan'){
-            steps{
-                sh label: '',script: 'terraform plan'
+        stage('Terraform Plan') {
+            steps {
+                sh label: '', script: 'terraform plan'
             }
         }
-        stage('Terraform apply'){
-            steps{
-                echo "Terraform action from the parameter is --->action"
-                sh label: '',script: 'terraform action --auto-approve'
+        stage('Terraform apply') {
+            steps {
+                echo 'Terraform action from the parameter is --->action'
+                sh label: '', script: 'terraform action --auto-approve'
             }
         }
-    
+    }
 }
-}
-//sa
