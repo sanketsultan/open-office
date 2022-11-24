@@ -13,10 +13,15 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+variable "security_group_id" {}
+
+data "aws_security_group" "devops-project" {
+  id = var.security_group_id
+}
+
 #############Security Group###################
 
 resource "aws_security_group" "devops-project" {
-  id          = "security-group-terraform"
   name        = "security-group-terraform"
   description = "security-group-terraform"
   vpc_id      = "vpc-0c735787e36a3c094"
