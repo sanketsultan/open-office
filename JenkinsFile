@@ -27,25 +27,25 @@ pipeline {
     //         // }
     //    // }
     //     }
-        stage('SonarQube analysis') {
-            environment {
-            SCANNER_HOME = tool 'Sonar'
-            }
-            steps {
-            withSonarQubeEnv(credentialsId: '38707341-cef0-48ba-aa98-58845cb06bbf', installationName: 'SonarQube') {
-                sh ''' $SCANNER_HOME/bin/sonar \
-                -Dsonar.projectKey=simple_webapp \
-                -Dsonar.sources=. '''
-            }
-            }
-        }
-        stage('SQuality Gate') {
-            steps {
-            timeout(time: 1, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-            }
-        }
-        }
+        // stage('SonarQube analysis') {
+        //     environment {
+        //     SCANNER_HOME = tool 'Sonar'
+        //     }
+        //     steps {
+        //     withSonarQubeEnv(credentialsId: '38707341-cef0-48ba-aa98-58845cb06bbf', installationName: 'SonarQube') {
+        //         sh ''' $SCANNER_HOME/bin/sonar \
+        //         -Dsonar.projectKey=simple_webapp \
+        //         -Dsonar.sources=. '''
+        //     }
+        //     }
+        // }
+        // stage('SQuality Gate') {
+        //     steps {
+        //     timeout(time: 1, unit: 'MINUTES') {
+        //     waitForQualityGate abortPipeline: true
+        //     }
+        // }
+        // }
         stage('Terraform Init'){
             steps{
                 sh label: '',script: 'terraform init'
