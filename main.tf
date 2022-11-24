@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = "eu-west-1"
+  region = "eu-west-1"
 }
 
 # ###########Security Group#####################
@@ -60,11 +60,11 @@ resource "aws_security_group" "devops-project" {
 
 
 resource "aws_instance" "app_server" {
-  ami = "ami-096800910c1b781ba"
-  instance_type = "t3.medium"
-  key_name = "terraform-key"
+  ami                    = "ami-096800910c1b781ba"
+  instance_type          = "t3.medium"
+  key_name               = "terraform-key"
   vpc_security_group_ids = ["${aws_security_group.devops-project.name}"]
-  user_data	= <<-EOL
+  user_data              = <<-EOL
   #! /bin/bash
   sudo apt update
   sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
