@@ -13,7 +13,7 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-# ###########Security Group#####################
+#############Security Group###################
 
 resource "aws_security_group" "devops-project" {
   name        = "security group terraform"
