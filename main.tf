@@ -27,7 +27,8 @@ resource "aws_instance" "app_server" {
 resource "aws_security_group" "Docker" {
   tags = {
     type = "terraform-test-security-group"
-    ingress {
+  }
+  ingress {
     cidr_blocks = [
       "0.0.0.0/0"
     ]
@@ -42,7 +43,6 @@ from_port = 22
    protocol = "-1"
    cidr_blocks = ["0.0.0.0/0"]
  }
-  }
 }
 variable "docker-image" {
   type        = string
