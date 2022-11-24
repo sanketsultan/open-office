@@ -18,15 +18,11 @@ pipeline {
                         checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sanketsultan/open-office.git']]])
                     }
                 }
-        // tools {
-        //     maven 'maven'
-        //     jdk 'java'
-        // }
-        stage('Build project') {
+        stage('Build Project') {
             // def mvnHome = tool name: 'Apache Maven 3.8.0', type: 'maven'
             // withSonarQubeEnv('SonarQube'){
             // sh '''${mvnHome}/bin/mvn packag'''
-            sh 'mvn -B -DskipTests clean package'
+            sh '''mvn -B -DskipTests clean package'''
         }
         stage('SonarQube analysis') {
             environment {
