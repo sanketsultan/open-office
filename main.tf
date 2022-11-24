@@ -18,7 +18,7 @@ provider "aws" {
 resource "aws_security_group" "devops-project" {
   name        = "security group terraform"
   description = "security group terraform"
-  vpc_id      = vpc-0c735787e36a3c094
+  vpc_id      = "vpc-0c735787e36a3c094"
 
   ingress {
     description      = "SSH"
