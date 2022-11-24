@@ -13,11 +13,11 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-variable "security_group_id" {}
+# variable "security_group_id" {}
 
-data "aws_security_group" "devops-project" {
-  id = var.security_group_id
-}
+# data "aws_security_group" "devops-project" {
+#   id = var.security_group_id
+# }
 
 #############Security Group###################
 
