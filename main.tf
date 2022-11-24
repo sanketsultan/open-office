@@ -44,7 +44,7 @@ provider "aws" {
 
 
 resource "aws_instance" "app_server" {
-  ami = "ami-830c94e3"
+  ami = "ami-096800910c1b781ba"
   instance_type = "t3.medium"
   key_name = "terraform"
   user_data	= file("linux.sh")
