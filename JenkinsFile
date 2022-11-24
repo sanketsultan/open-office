@@ -17,11 +17,10 @@ pipeline {
                         checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sanketsultan/open-office.git']]])
                     }
                 }
-        // tools {
-        //     maven 'maven'
-        //     jdk 'java'
-        // }
-        stages {
+        tools {
+            maven 'maven'
+            jdk 'java'
+        }
         stage('Build project') {
             steps {
             sh '''mvn install'''
@@ -67,6 +66,6 @@ pipeline {
                 sh label: '',script: 'terraform ${action} --auto-approve'
             }
         }
-    }
+    
 }
 }
