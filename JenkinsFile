@@ -21,7 +21,7 @@ pipeline {
         stage('Build Project') {
             def mvnHome = tool name: '3.8.6', type: 'maven'
             withSonarQubeEnv('SonarQube'){
-            sh '''${mvnHome}/bin/mvn packag'''
+            sh '''${mvnHome}/bin/mvn package'''
             steps{
             sh '''mvn -B -DskipTests clean package'''
             }
