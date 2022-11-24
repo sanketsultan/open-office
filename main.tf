@@ -12,47 +12,41 @@ terraform {
 provider "aws" {
   region  = "us-west-2"
 }
-resource "aws_vpc" "project" {
-  cidr_block = "10.0.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support = true
-  tags {
-    Name = "devops-project"
-  }
+data "aws_security_group" "selected" {
+  name = "launch-wizard-13"
 }
+
+resource "aws_security_group" "allow_ssh" {
+
+  description = "Allow ssh inbound traffic"
+
+  ingress {
+    description = "ssh"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 resource "aws_instance" "app_server" {
   ami = "ami-830c94e3"
   instance_type = "t2.micro"
   key_name = "terraform"
   user_data	= file("linux.sh")
   vpc_security_group_ids = [
-   Docker.id
+  aws_security_group.allow_ssh.id
   ]
   tags = {
     Name = "open-office"
   }
 }
-resource "aws_security_group" "Docker" {
-  tags = {
-    type = "terraform-test-security-group"
-  }
-  vpc_id = "${aws_vpc.test-env.id}"
-  ingress {
-    cidr_blocks = [
-      "0.0.0.0/0"
-    ]
-  from_port = 22
-    to_port = 22
-    protocol = "tcp"
-  }
-// Terraform removes the default rule
-  egress {
-   from_port = 0
-   to_port = 0
-   protocol = "-1"
-   cidr_blocks = ["0.0.0.0/0"]
- }
-}
+
 variable "docker-image" {
   type        = string
   description = "name of the docker image to deploy"
