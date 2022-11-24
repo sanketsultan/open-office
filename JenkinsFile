@@ -22,11 +22,12 @@ pipeline {
         //     maven 'maven'
         //     jdk 'java'
         // }
-        // stage('Build project') {
-        //     steps {
-        //     sh '''mvn install'''
-        //     }
-        // }
+        stage('Build project') {
+            steps {
+            def mvnHome = tool name: 'maven', type: 'maven'
+            sh "${mvnHome}/bin/mvn package"
+            }
+        }
         stage('SonarQube analysis') {
             environment {
             SCANNER_HOME = tool 'Sonar'
