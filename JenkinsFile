@@ -19,7 +19,7 @@ pipeline {
                     }
                 }
         stage('Build Project') {
-            def mvnHome = tool name: 'SonarQube 3.8.0', type: 'maven'
+            def mvnHome = tool name: '3.8.6', type: 'maven'
             withSonarQubeEnv('SonarQube'){
             sh '''${mvnHome}/bin/mvn packag'''
             steps{
