@@ -63,7 +63,7 @@ resource "aws_instance" "app_server" {
   ami = "ami-096800910c1b781ba"
   instance_type = "t3.medium"
   key_name = "terraform"
-  vpc_security_group_ids = ["${security_group.devops-project.name}"]
+  vpc_security_group_ids = ["${aws_security_group.devops-project.name}"]
   user_data	= file("linux.sh")
   tags = {
     Name = "open-office"
