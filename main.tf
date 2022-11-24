@@ -18,8 +18,30 @@ resource "aws_instance" "app_server" {
   instance_type = "t2.micro"
   key_name = "terraform"
   user_data	= file("linux.sh")
+  security_groups = [ "Docker" ]
+
   tags = {
     Name = "open-office"
+  }
+}
+resource "aws_security_group" "Docker" {
+  tags = {
+    type = "terraform-test-security-group"
+    ingress {
+    cidr_blocks = [
+      "0.0.0.0/0"
+    ]
+from_port = 22
+    to_port = 22
+    protocol = "tcp"
+  }
+// Terraform removes the default rule
+  egress {
+   from_port = 0
+   to_port = 0
+   protocol = "-1"
+   cidr_blocks = ["0.0.0.0/0"]
+ }
   }
 }
 variable "docker-image" {
