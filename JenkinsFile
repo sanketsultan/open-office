@@ -17,10 +17,10 @@ pipeline {
                         checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sanketsultan/open-office.git']]])
                     }
                 }
-        tools {
-            maven 'maven'
-            jdk 'java'
-        }
+        // tools {
+        //     maven 'maven'
+        //     jdk 'java'
+        // }
         stage('Build project') {
             steps {
             sh '''mvn install'''
