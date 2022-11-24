@@ -7,8 +7,10 @@ pipeline {
     
     stages {
         stage('Clone Repository'){
-            git clone https://github.com/sanketsultan/open-office.git
-            git checkout master
+            steps{
+                git clone https://github.com/sanketsultan/open-office.git
+                git checkout master
+            }
         }
         stage('Checkout') {
             steps {
