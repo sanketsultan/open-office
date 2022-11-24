@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-west-2"
+  region  = "eu-west-1"
 }
 
 # ###########Security Group#####################
@@ -18,7 +18,7 @@ provider "aws" {
 # resource "aws_security_group" "allow_tls" {
 #   name        = "allow_tls"
 #   description = "Allow TLS inbound traffic"
-#   vpc_id      = aws_vpc.main.id
+#   vpc_id      = vpc-0b3bde132ef075470
 
 #   ingress {
 #     description      = "TLS from VPC"
@@ -45,7 +45,7 @@ provider "aws" {
 
 resource "aws_instance" "app_server" {
   ami = "ami-830c94e3"
-  instance_type = "t2.micro"
+  instance_type = "t3.medium"
   key_name = "terraform"
   user_data	= file("linux.sh")
   tags = {
