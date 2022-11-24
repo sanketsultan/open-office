@@ -22,7 +22,9 @@ pipeline {
             // def mvnHome = tool name: 'Apache Maven 3.8.0', type: 'maven'
             // withSonarQubeEnv('SonarQube'){
             // sh '''${mvnHome}/bin/mvn packag'''
+            steps{
             sh '''mvn -B -DskipTests clean package'''
+            }
         }
         stage('SonarQube analysis') {
             environment {
