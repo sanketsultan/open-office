@@ -34,6 +34,7 @@ resource "aws_security_group" "allow_ssh" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
 resource "aws_instance" "app_server" {
   ami = "ami-830c94e3"
   instance_type = "t2.micro"
