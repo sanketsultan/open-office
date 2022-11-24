@@ -46,6 +46,17 @@ pipeline {
         //     }
         // }
         // }
+        stage('Build') {
+            agent {
+                docker {
+                    image 'python:2-alpine'
+                }
+            }
+            steps {
+                sh 'python -m py_compile sources/app.py'
+                stash(name: 'compiled-results', includes: 'sources/*.py*')
+            }
+        }
         stage('Terraform Init') {
             steps {
                 sh label: '', script: 'terraform init'
