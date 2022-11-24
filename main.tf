@@ -13,12 +13,6 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-# variable "security_group_id" {}
-
-# data "aws_security_group" "devops-project" {
-#   id = var.security_group_id
-# }
-
 #############Security Group###################
 
 resource "aws_security_group" "devops-project" {
@@ -34,7 +28,6 @@ resource "aws_security_group" "devops-project" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-
   ingress {
     description      = "HTTPS"
     from_port        = 443
@@ -43,7 +36,6 @@ resource "aws_security_group" "devops-project" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-  
   ingress {
     description      = "HTTP"
     from_port        = 80
