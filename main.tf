@@ -34,7 +34,6 @@ resource "aws_security_group" "devops-project" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-  
   ingress {
     description      = "HTTPS"
     from_port        = 443
