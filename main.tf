@@ -15,38 +15,55 @@ provider "aws" {
 
 # ###########Security Group#####################
 
-# resource "aws_security_group" "allow_tls" {
-#   name        = "allow_tls"
-#   description = "Allow TLS inbound traffic"
-#   vpc_id      = vpc-0b3bde132ef075470
+resource "aws_security_group" "devops-project" {
+  name        = "security group terraform"
+  description = "security group terraform"
+  vpc_id      = vpc-0c735787e36a3c094
 
-#   ingress {
-#     description      = "TLS from VPC"
-#     from_port        = 443
-#     to_port          = 443
-#     protocol         = "tcp"
-#     cidr_blocks      = [aws_vpc.main.cidr_block]
-#     ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
-#   }
+  ingress {
+    description      = "SSH"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+  ingress {
+    description      = "HTTPS"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+  ingress {
+    description      = "HTTP"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
 
-#   egress {
-#     from_port        = 0
-#     to_port          = 0
-#     protocol         = "-1"
-#     cidr_blocks      = ["0.0.0.0/0"]
-#     ipv6_cidr_blocks = ["::/0"]
-#   }
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
 
-#   tags = {
-#     Name = "allow_tls"
-#   }
-# }
+  tags = {
+    Name = "devops-project"
+  }
+}
 
 
 resource "aws_instance" "app_server" {
   ami = "ami-096800910c1b781ba"
   instance_type = "t3.medium"
   key_name = "terraform"
+  security_groups = ["aws_security_group.devops-project.name"]
   user_data	= file("linux.sh")
   tags = {
     Name = "open-office"
