@@ -33,15 +33,9 @@ pipeline {
             }
             steps {
             withSonarQubeEnv(credentialsId: '38707341-cef0-48ba-aa98-58845cb06bbf', installationName: 'SonarQube') {
-                sh ''' sudo $SCANNER_HOME/bin/\
-                -Dsonar.projectKey=projectKey \
-                -Dsonar.projectName=projectName \
-                -Dsonar.sources=src/ \
-                -Dsonar.java.binaries=target/classes/ \
-                -Dsonar.exclusions=src/test/java/****/*.java \
-                -Dsonar.java.libraries=/var/lib/jenkins/.m2/**/*.jar \
-                -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
-            }
+                sh ''' $SCANNER_HOME/bin/Sonar \
+                -Dsonar.projectKey=simple_webapp \
+                -Dsonar.sources=. 
             }
         }
         stage('SQuality Gate') {
