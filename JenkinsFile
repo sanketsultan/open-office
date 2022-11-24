@@ -19,13 +19,14 @@ pipeline {
                     }
                 }
         stage('Build Project') {
-            def mvnHome = tool name: '3.8.6', type: 'maven'
-            withSonarQubeEnv('SonarQube'){
-            sh '''${mvnHome}/bin/mvn package'''
-            steps{
-            sh '''mvn -B -DskipTests clean package'''
-            }
-        }}
+            // def mvnHome = tool name: '3.8.6', type: 'maven'
+            // withSonarQubeEnv('SonarQube'){
+            // sh '''${mvnHome}/bin/mvn package'''
+            // steps{
+            // sh '''mvn -B -DskipTests clean package'''
+            // }
+       // }
+        }
         stage('SonarQube analysis') {
             environment {
             SCANNER_HOME = tool 'Sonar'
