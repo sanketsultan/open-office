@@ -23,8 +23,9 @@ pipeline {
         //     jdk 'java'
         // }
         stage('Build project') {
-            def mvnHome = tool name: 'maven', type: 'maven'
             step{
+            def mvnHome = tool name: 'maven', type: 'maven'
+            
             sh '''${mvnHome}/bin/mvn packag'''
             }
         }
