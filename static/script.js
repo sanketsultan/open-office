@@ -37,6 +37,13 @@ function updateSelectedCount() {
 
       selections[objIndex] = currentObject;
 
+      const request = new XMLHttpRequest()
+      request.open('PUT',`/bookings/update/${JSON.stringify(selections)}`)
+      request.onload = () => {
+        const flaskMsg = request.responseText
+        console.log(flaskMsg)
+      }
+      request.send()
       console.log("selections updated: " + JSON.stringify(selections));
     } else {
       console.log("dates not present");
@@ -46,8 +53,16 @@ function updateSelectedCount() {
         date: dateSelection,
         seats: selectedSeats,
       });
+      const request = new XMLHttpRequest()
 
+      request.open('POST',`/bookings/insert/${JSON.stringify(selections)}`)
+      request.onload = () => {
+        const flaskMsg = request.responseText
+        console.log(flaskMsg)
+      }
       console.log("selections inserted: " + JSON.stringify(selections));
+      request.send()
+
     }
   }
 }
