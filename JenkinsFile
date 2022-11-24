@@ -18,39 +18,39 @@ pipeline {
                         checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sanketsultan/open-office.git']]])
                     }
                 }
-    //     stage('Build Project') {
-    //         // def mvnHome = tool name: '3.8.6', type: 'maven'
-    //         // withSonarQubeEnv('SonarQube'){
-    //         // sh '''${mvnHome}/bin/mvn package'''
-    //         // steps{
-    //         // sh '''mvn -B -DskipTests clean package'''
-    //         // }
-    //    // }
+    // //     stage('Build Project') {
+    // //         // def mvnHome = tool name: '3.8.6', type: 'maven'
+    // //         // withSonarQubeEnv('SonarQube'){
+    // //         // sh '''${mvnHome}/bin/mvn package'''
+    // //         // steps{
+    // //         // sh '''mvn -B -DskipTests clean package'''
+    // //         // }
+    // //    // }
+    // //     }
+    //     stage('SonarQube analysis') {
+    //         environment {
+    //         SCANNER_HOME = tool 'Sonar'
+    //         }
+    //         steps {
+    //         withSonarQubeEnv(credentialsId: '38707341-cef0-48ba-aa98-58845cb06bbf', installationName: 'SonarQube') {
+    //             sh '''$SCANNER_HOME/bin/sonarqube \
+    //             -Dsonar.projectKey=projectKey \
+    //             -Dsonar.projectName=projectName \
+    //             -Dsonar.sources=src/ \
+    //             -Dsonar.java.binaries=target/classes/ \
+    //             -Dsonar.exclusions=src/test/java/****/*.java \
+    //             -Dsonar.java.libraries=/var/lib/jenkins/.m2/**/*.jar \
+    //             -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
+    //         }
+    //         }
     //     }
-        stage('SonarQube analysis') {
-            environment {
-            SCANNER_HOME = tool 'Sonar'
-            }
-            steps {
-            withSonarQubeEnv(credentialsId: '38707341-cef0-48ba-aa98-58845cb06bbf', installationName: 'SonarQube') {
-                sh '''$SCANNER_HOME/bin/sonarqube \
-                -Dsonar.projectKey=projectKey \
-                -Dsonar.projectName=projectName \
-                -Dsonar.sources=src/ \
-                -Dsonar.java.binaries=target/classes/ \
-                -Dsonar.exclusions=src/test/java/****/*.java \
-                -Dsonar.java.libraries=/var/lib/jenkins/.m2/**/*.jar \
-                -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
-            }
-            }
-        }
-        stage('SQuality Gate') {
-            steps {
-            timeout(time: 1, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-            }
-        }
-        }
+    //     stage('SQuality Gate') {
+    //         steps {
+    //         timeout(time: 1, unit: 'MINUTES') {
+    //         waitForQualityGate abortPipeline: true
+    //         }
+    //     }
+    //     }
         stage('Terraform Init'){
             steps{
                 sh label: '',script: 'terraform init'
