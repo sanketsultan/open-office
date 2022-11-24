@@ -24,8 +24,9 @@ pipeline {
         // }
         stage('Build project') {
             def mvnHome = tool name: 'maven', type: 'maven'
+            step{
             sh '''${mvnHome}/bin/mvn packag'''
-            
+            }
         }
         stage('SonarQube analysis') {
             environment {
