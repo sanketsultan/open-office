@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('Clone Repository'){
             steps{
-                git clone https://github.com/sanketsultan/open-office.git
-                git checkout master
+               sh git clone https://github.com/sanketsultan/open-office.git
+               sh git checkout master
             }
         }
         stage('Checkout') {
