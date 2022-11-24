@@ -14,12 +14,13 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
+  ami = "ami-830c94e3"
   instance_type = "t2.micro"
   key_name = "terraform"
   user_data	= file("linux.sh")
-  security_groups = [ "Docker" ]
-
+  vpc_security_group_ids = [
+   aws_security_group.allow_ssh.id
+  ]
   tags = {
     Name = "open-office"
   }
