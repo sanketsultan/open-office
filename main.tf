@@ -16,6 +16,7 @@ provider "aws" {
 #############Security Group###################
 
 resource "aws_security_group" "devops-project" {
+  id          = "security-group-terraform"
   name        = "security-group-terraform"
   description = "security-group-terraform"
   vpc_id      = "vpc-0c735787e36a3c094"
@@ -64,7 +65,7 @@ resource "aws_instance" "app_server" {
   ami                    = "ami-096800910c1b781ba"
   instance_type          = "t3.medium"
   key_name               = "terraform-key"
-  vpc_security_group_ids = ["${aws_security_group.devops-project.name}"]
+  vpc_security_group_ids = ["${aws_security_group.devops-project.id}"]
   user_data              = <<-EOL
   #! /bin/bash
   sudo apt update
