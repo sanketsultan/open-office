@@ -12,7 +12,14 @@ terraform {
 provider "aws" {
   region  = "us-west-2"
 }
-
+resource "aws_vpc" "project" {
+  cidr_block = "10.0.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support = true
+  tags {
+    Name = "devops-project"
+  }
+}
 resource "aws_instance" "app_server" {
   ami = "ami-830c94e3"
   instance_type = "t2.micro"
@@ -29,11 +36,12 @@ resource "aws_security_group" "Docker" {
   tags = {
     type = "terraform-test-security-group"
   }
+  vpc_id = "${aws_vpc.test-env.id}"
   ingress {
     cidr_blocks = [
       "0.0.0.0/0"
     ]
-from_port = 22
+  from_port = 22
     to_port = 22
     protocol = "tcp"
   }
