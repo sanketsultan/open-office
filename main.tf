@@ -88,11 +88,12 @@ resource "aws_instance" "app_server" {
     private_key = "/open-office/terraform-key.pem"
   } 
 
-  # provisioner "remote-exec" {
-  #   inline = [
-  #     "export TEAM3=SUCCESS"
-  #   ]
-  # }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt-get install nginx -y",
+      "sudo service nginx start"
+    ]
+  }
   tags = {
     Name = "open-office"
   }
