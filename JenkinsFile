@@ -48,10 +48,10 @@ pipeline {
         // }
         stage('Build') {
             steps {
-                cd open-office
+               sh 'cd open-office'
                 sh 'python -m py_compile app.py'
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
-                cd ..
+               sh 'cd ..'
             }
         }
         stage('Terraform Init') {
