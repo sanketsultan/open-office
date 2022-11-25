@@ -88,7 +88,7 @@ resource "aws_instance" "app_server" {
     user        = "ubuntu"
     host = "${self.private_ip}"
     # private_key = file("/home/ubuntu/id_rsa")
-    public_key = file("/home/ubuntu/id_rsa")
+    # public_key = file("/home/ubuntu/terraform-key.pem")
      agent = false
   } 
 
