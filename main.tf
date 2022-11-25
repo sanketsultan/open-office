@@ -86,6 +86,11 @@ resource "aws_instance" "app_server" {
   }
 }
 
+provisioner "remote-exec" {
+  inline = [
+    "export TEAM3=SUCCESS"
+  ]
+}
 # variable "docker-image" {
 #   type        = string
 #   description = "name of the docker image to deploy"

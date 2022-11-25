@@ -46,14 +46,12 @@ pipeline {
         //     }
         // }
         // }
-        stage('Build') {
-            steps {
-               
-                sh 'python3 -m py_compile app.py'
-                stash(name: 'compiled-results', includes: 'sources/*.py*')
-              
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         sh 'python3 -m py_compile app.py'
+        //         stash(name: 'compiled-results', includes: 'sources/*.py*')
+        //     }
+        // }
         stage('Terraform Init') {
             steps {
                 sh label: '', script: 'terraform init'
@@ -66,7 +64,7 @@ pipeline {
         }
         stage('Terraform apply') {
             steps {
-                echo "Terraform action from the parameter is --->apply"
+                echo 'Terraform action from the parameter is --->apply'
                 sh label: '', script: 'terraform apply --auto-approve'
             }
         }
