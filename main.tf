@@ -81,15 +81,16 @@ resource "aws_instance" "app_server" {
   # sudo docker run --name vison91/office_spaces -p 80:80 -d vison91/office_spaces
 
   # EOL
-  connection {
+
+  provisioner "remote-exec" {
+    connection {
     type = "ssh"
     user        = "ubuntu"
     host = "${self.private_ip}"
-    private_key = "file(/home/ubuntu/terraform-key.pem)"
+    private_key = "${file("/home/ubuntu/terraform-key.pem")}"
     agent = false
   } 
 
-  provisioner "remote-exec" {
     inline = [
       "sudo apt-get install nginx -y",
       "sudo service nginx start"
