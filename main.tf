@@ -81,12 +81,12 @@ resource "aws_instance" "app_server" {
   # sudo docker run --name vison91/office_spaces -p 80:80 -d vison91/office_spaces
 
   # EOL
-  # connection {
-  #   type = "ssh"
-  #   user        = "ec2-user"
-  #   private_key = "${file(var.private_key_path)}"
-  #   host = "${self.private_ip}"
-  # } 
+  connection {
+    type = "ssh"
+    user        = "ubuntu"
+    host = "${self.private_ip}"
+    private_key = "/open-office/terraform-key.pem"
+  } 
 
   # provisioner "remote-exec" {
   #   inline = [
