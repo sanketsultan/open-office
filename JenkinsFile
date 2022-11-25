@@ -48,10 +48,10 @@ pipeline {
         // }
         stage('Build') {
             steps {
-                sh 'sudo apt-get update'
-                sh 'sudo apt-get install python3'
+                cd open-office
                 sh 'python -m py_compile app.py'
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
+                cd ..
             }
         }
         stage('Terraform Init') {
