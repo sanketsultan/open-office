@@ -87,8 +87,9 @@ resource "aws_instance" "app_server" {
     type = "ssh"
     user        = "ubuntu"
     host = "${self.private_ip}"
-    private_key = file("/home/ubuntu/id_rsa")
-    agent = false
+    # private_key = file("/home/ubuntu/id_rsa")
+    public_key = file("/home/ubuntu/id_rsa")
+     agent = false
   } 
 
     inline = [
