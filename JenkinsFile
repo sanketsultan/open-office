@@ -49,7 +49,7 @@ pipeline {
         stage('Build') {
             steps {
                
-                sh 'python -m py_compile app.py'
+                sh 'python3 -m py_compile app.py'
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
               
             }
