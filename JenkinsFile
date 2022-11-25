@@ -48,8 +48,8 @@ pipeline {
         // }
         stage('Build') {
             steps {
-                sh 'sudo apt update'
-                sh 'sudo apt install python3'
+                sh 'sudo apt-get update'
+                sh 'sudo apt-get install python3'
                 sh 'python -m py_compile app.py'
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
