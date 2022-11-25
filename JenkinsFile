@@ -36,9 +36,9 @@ pipeline {
                 sh ''' $SCANNER_HOME/bin/sonar \
                 -Dsonar.projectKey=simple_webapp \
                 -Dsonar.sources=. '''
-        //     }
-        //     }
-        // }
+            }
+            }
+        }
         // stage('SQuality Gate') {
         //     steps {
         //     timeout(time: 1, unit: 'MINUTES') {
