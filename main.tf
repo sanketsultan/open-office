@@ -63,7 +63,7 @@ resource "aws_security_group" "devops-project" {
 resource "aws_instance" "app_server" {
   ami                    = "ami-096800910c1b781ba"
   instance_type          = "t3.medium"
-  key_name               = "terraform-key"
+  key_name               = "terraform"
   vpc_security_group_ids = ["${aws_security_group.devops-project.id}"]
   # user_data              = <<-EOL
   # #! /bin/bash
