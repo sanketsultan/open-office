@@ -82,14 +82,18 @@ resource "aws_instance" "app_server" {
 
   # EOL
 
-  provisioner "remote-exec" {
-    connection {
-    type = "ssh"
-    user        = "ubuntu"
-    host = "${self.private_ip}"
-    private_key = file("~/.ssh/id_rsa.pem")
-    agent = false
-  } 
+  # provisioner "remote-exec" {
+  #   connection {
+  #   type = "ssh"
+  #   user        = "ubuntu"
+  #   host = "${self.private_ip}"
+  #   private_key = file("~/.ssh/id_rsa.pem")
+  #   agent = false
+  # } 
+
+  provisioner "local-exec" {
+    command = "echo The server's IP address is ${self.private_ip}"
+  }
 
     inline = [
       "sudo apt-get install nginx -y",
