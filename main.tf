@@ -63,7 +63,7 @@ resource "aws_security_group" "devops-project" {
 resource "aws_instance" "app_server" {
   ami                    = "ami-096800910c1b781ba"
   instance_type          = "t3.medium"
-  key_name               = "terraform"
+  key_name               = "terraform-key"
   vpc_security_group_ids = ["${aws_security_group.devops-project.id}"]
   # user_data              = <<-EOL
   # #! /bin/bash
@@ -81,12 +81,18 @@ resource "aws_instance" "app_server" {
   # sudo docker run --name vison91/office_spaces -p 80:80 -d vison91/office_spaces
 
   # EOL
+  # connection {
+  #   type = "ssh"
+  #   user        = "ec2-user"
+  #   private_key = "${file(var.private_key_path)}"
+  #   host = "${self.private_ip}"
+  # } 
 
-  provisioner "remote-exec" {
-    inline = [
-      "export TEAM3=SUCCESS"
-    ]
-  }
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "export TEAM3=SUCCESS"
+  #   ]
+  # }
   tags = {
     Name = "open-office"
   }
