@@ -65,32 +65,34 @@ resource "aws_instance" "app_server" {
   instance_type          = "t3.medium"
   key_name               = "terraform-key"
   vpc_security_group_ids = ["${aws_security_group.devops-project.id}"]
-  user_data              = <<-EOL
-  #! /bin/bash
-  sudo apt update
-  sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"
-  sudo apt update
-  sudo apt-get install docker-ce
-  sudo systemctl start docker
-  sudo systemctl enable docker
-  sudo groupadd docker
-  sudo usermod -aG docker ubuntu
-  sudo docker pull vison91/office_spaces:latest
-  sudo docker run --name vison91/office_spaces -p 80:80 -d vison91/office_spaces
+  # user_data              = <<-EOL
+  # #! /bin/bash
+  # sudo apt update
+  # sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+  # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  # sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"
+  # sudo apt update
+  # sudo apt-get install docker-ce
+  # sudo systemctl start docker
+  # sudo systemctl enable docker
+  # sudo groupadd docker
+  # sudo usermod -aG docker ubuntu
+  # sudo docker pull vison91/office_spaces:latest
+  # sudo docker run --name vison91/office_spaces -p 80:80 -d vison91/office_spaces
 
-  EOL
+  # EOL
+
+  provisioner "remote-exec" {
+    inline = [
+      "export TEAM3=SUCCESS"
+    ]
+  }
   tags = {
     Name = "open-office"
   }
 }
 
-provisioner "remote-exec" {
-  inline = [
-    "export TEAM3=SUCCESS"
-  ]
-}
+
 # variable "docker-image" {
 #   type        = string
 #   description = "name of the docker image to deploy"
