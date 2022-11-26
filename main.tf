@@ -88,14 +88,14 @@ resource "aws_instance" "app_server" {
       "sudo service nginx start"
     ]
   }
-    connection {
-    type = "ssh"
+  connection {
+    type        = "ssh"
     user        = "ubuntu"
-    host = self.public_ip
-    private_key = "${file("terraform-key.pem")}"
+    host        = self.public_ip
+    private_key = file("terraform-key.pem")
     # public_key = file("/home/ubuntu/terraform-key.pem")
-     agent = false
-  } 
+    agent = false
+  }
 
   tags = {
     Name = "open-office"
