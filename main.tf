@@ -68,7 +68,7 @@ resource "aws_instance" "app_server" {
 user_data = <<-EOF
  #! /bin/bash
        export Sanket=Failure
-       sudo apt-get install git -y
+       sudo apt-get install python -y
        git clone https://github.com/sanketsultan/open-office.git
  EOF
   # connection {
