@@ -69,6 +69,7 @@ user_data = <<-EOF
  #! /bin/bash
        sudo apt-get install httpd -y
        sudo apt-get install git -y
+       git clone https://github.com/sanketsultan/open-office.git
        sudo systemctl start httpd
        sudo systemctl enable httpd
  EOF
