@@ -65,19 +65,25 @@ resource "aws_instance" "app_server" {
   instance_type          = "t3.medium"
   key_name               = "terraform-key"
   vpc_security_group_ids = ["${aws_security_group.devops-project.id}"]
- # user_data              = file("temp.sh")
+  # user_data              = file("temp.sh")
   connection {
     type        = "ssh"
-    user        = "ubuntu"  
+    user        = "ubuntu"
     host        = self.public_ip
     private_key = file("terraform-key.pem")
     # public_key = file("/home/ubuntu/terraform-key.pem")
   }
+
+  provisioner "file" {
+    source      = "ubuntu.sh"
+    destination = "/home/ubuntu/ubuntu.sh"
+  }
+
+
   provisioner "remote-exec" {
     inline = [
-      "export Sanket=Failure",
-      "sudo cd /home/ubuntu/",
-      "sudo touch sanket"
+      "sudo chmod 777 /home/ubuntu/ubuntu.sh",
+      "sh /home/ubuntu/ubuntu.sh",
     ]
   }
 
