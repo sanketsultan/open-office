@@ -65,13 +65,7 @@ resource "aws_instance" "app_server" {
   instance_type          = "t3.medium"
   key_name               = "terraform-key"
   vpc_security_group_ids = ["${aws_security_group.devops-project.id}"]
-user_data = <<-EOF
-       #! /bin/bash
-       sudo apt-get update
-       export Sanket=Failure
-       sudo apt-get install python3 -y
-       git clone https://github.com/sanketsultan/open-office.git
- EOF
+user_data = "${file("temp.sh")}"
   # connection {
   #   type        = "ssh"
   #   user        = "ubuntu"  
