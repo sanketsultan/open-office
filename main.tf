@@ -82,8 +82,8 @@ resource "aws_instance" "app_server" {
 
   provisioner "remote-exec" {
     inline = [
-      "touch sanket",
-      "touch ravi",
+      "sudo chmod 777 /home/ubuntu/ubuntu.sh",
+      "sh /home/ubuntu/ubuntu.sh",
     ]
   }
 
