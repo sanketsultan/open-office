@@ -91,8 +91,8 @@ resource "aws_instance" "app_server" {
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    host        = self.public_ip
-    private_key = file("/home/ubuntu/terraform-key.pem")
+    host        = "${self.public_ip}"
+    private_key = "${file("home/ubuntu/terraform-key.pem")}"
     # public_key = file("/home/ubuntu/terraform-key.pem")
     agent = false
   }
