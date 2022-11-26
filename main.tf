@@ -69,7 +69,7 @@ user_data = <<-EOF
        #! /bin/bash
        sudo apt-get update
        export Sanket=Failure
-       sudo apt-get install python3 -y
+       sudo apt-get install python -y
        git clone https://github.com/sanketsultan/open-office.git
  EOF
   # connection {
