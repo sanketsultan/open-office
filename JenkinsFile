@@ -65,7 +65,7 @@ pipeline {
         stage('Terraform apply') {
             steps {
                 echo 'Terraform action from the parameter is --->apply'
-                sh label: '', script: 'terraform destroy --auto-approve'
+                sh label: '', script: 'terraform apply --auto-approve'
             }
         }
     }
