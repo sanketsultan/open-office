@@ -83,7 +83,7 @@ resource "aws_instance" "app_server" {
   provisioner "remote-exec" {
     inline = [
       "sudo chmod 777 /home/ubuntu/ubuntu.sh",
-      "sh /home/ubuntu/ubuntu.sh",
+      "sh /home/ubuntu/ubuntu.sh > op.txt >> op_err.txt",
     ]
   }
 
