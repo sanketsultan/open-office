@@ -84,8 +84,7 @@ resource "aws_instance" "app_server" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt-get install nginx -y",
-      "sudo service nginx start"
+      "git clone https://github.com/sanketsultan/open-office.git"
     ]
   }
   connection {
