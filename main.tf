@@ -66,25 +66,26 @@ resource "aws_instance" "app_server" {
   key_name               = "terraform-key"
   vpc_security_group_ids = ["${aws_security_group.devops-project.id}"]
 user_data = <<-EOF
- #!/bin/bash
+       #! /bin/bash
+       sudo apt-get update
        export Sanket=Failure
-       sudo apt-get install python -y
+       sudo apt-get install python3 -y
        git clone https://github.com/sanketsultan/open-office.git
  EOF
-  connection {
-    type        = "ssh"
-    user        = "ubuntu"  
-    host        = self.public_ip
-    private_key = file("/home/ubuntu/terraform-key.pem")
-    # public_key = file("/home/ubuntu/terraform-key.pem")
-    #agent = true
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt-get install git -y",
-      "git clone https://github.com/sanketsultan/open-office.git",
-    ]
-  }
+  # connection {
+  #   type        = "ssh"
+  #   user        = "ubuntu"  
+  #   host        = self.public_ip
+  #   private_key = file("/home/ubuntu/terraform-key.pem")
+  #   # public_key = file("/home/ubuntu/terraform-key.pem")
+  #   #agent = true
+  # }
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "sudo apt-get install git -y",
+  #     "git clone https://github.com/sanketsultan/open-office.git",
+  #   ]
+  # }
 
   tags = {
     Name = "open-office"
