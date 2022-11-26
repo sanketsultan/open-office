@@ -76,7 +76,7 @@ resource "aws_instance" "app_server" {
   }
   provisioner "remote-exec" {
     inline = [
-      "export Sanket=Failure"
+      "export Sanket=Success"
     ]
   }
 
