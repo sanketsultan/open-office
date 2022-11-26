@@ -61,7 +61,7 @@ resource "aws_security_group" "devops-project" {
 
 
 resource "aws_instance" "app_server" {
-  ami                    = "ami-096800910c1b781ba"
+  ami                    = "ami-01cae1550c0adea9c"
   instance_type          = "t3.medium"
   key_name               = "terraform-key"
   vpc_security_group_ids = ["${aws_security_group.devops-project.id}"]
