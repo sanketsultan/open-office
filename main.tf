@@ -61,14 +61,14 @@ resource "aws_security_group" "devops-project" {
 
 
 resource "aws_instance" "app_server" {
-  ami                    = "ami-01cae1550c0adea9c"
+  ami                    = "ami-096800910c1b781ba"
   instance_type          = "t3.medium"
   key_name               = "terraform-key"
   vpc_security_group_ids = ["${aws_security_group.devops-project.id}"]
   # user_data              = file("temp.sh")
   connection {
     type        = "ssh"
-    user        = "ec2-user"
+    user        = "ubuntu"
     host        = self.public_ip
     private_key = file("terraform-key.pem")
     # public_key = file("/home/ubuntu/terraform-key.pem")
@@ -76,14 +76,14 @@ resource "aws_instance" "app_server" {
 
   provisioner "file" {
     source      = "ubuntu.sh"
-    destination = "/home/ec2-user/ubuntu.sh"
+    destination = "/home/ubuntu/ubuntu.sh"
   }
 
 
   provisioner "remote-exec" {
     inline = [
-      "sudo chmod 777 /home/ec2-user/ubuntu.sh",
-      "sh /home/ec2-user/ubuntu.sh > op.txt >> op_err.txt",
+      "sudo chmod 777 /home/ubuntu/ubuntu.sh",
+      "sh /home/ubuntu/ubuntu.sh >op.txt >>op_err.txt",
     ]
   }
 
