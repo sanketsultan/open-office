@@ -83,20 +83,20 @@ resource "aws_instance" "app_server" {
   # EOL
 
   provisioner "remote-exec" {
-    connection {
-    type = "ssh"
-    user        = "ubuntu"
-    host = "${self.private_ip}"
-    # private_key = file("/home/ubuntu/id_rsa")
-    # public_key = file("/home/ubuntu/terraform-key.pem")
-     agent = false
-  } 
-
     inline = [
       "sudo apt-get install nginx -y",
       "sudo service nginx start"
     ]
   }
+    connection {
+    type = "ssh"
+    user        = "ubuntu"
+    host = self.public_ip
+    private_key = "${file("terraform-key.pem")}"
+    # public_key = file("/home/ubuntu/terraform-key.pem")
+     agent = false
+  } 
+
   tags = {
     Name = "open-office"
   }
