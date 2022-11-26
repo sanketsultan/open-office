@@ -81,19 +81,19 @@ resource "aws_instance" "app_server" {
   # sudo docker run --name vison91/office_spaces -p 80:80 -d vison91/office_spaces
 
   # EOL
-
-  provisioner "remote-exec" {
-    inline = [
-      "git clone https://github.com/sanketsultan/open-office.git"
-    ]
-  }
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    host        = "${self.public_ip}"
+    host        = self.public_ip
     private_key = "${file("terraform-key.pem")}"
     # public_key = file("/home/ubuntu/terraform-key.pem")
-    agent = true
+    #agent = true
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt-get install git -y",
+      "git clone https://github.com/sanketsultan/open-office.git"
+    ]
   }
 
   tags = {
