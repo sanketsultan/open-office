@@ -75,7 +75,7 @@ resource "aws_instance" "app_server" {
   }
   provisioner "remote-exec" {
     inline = [
-      "sudo export Sanket=Failure",
+      "export Sanket=Failure",
       "sudo cd /home/ubuntu/",
       "sudo touch sanket"
     ]
