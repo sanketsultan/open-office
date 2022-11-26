@@ -94,7 +94,7 @@ resource "aws_instance" "app_server" {
     host        = "${self.public_ip}"
     private_key = "${file("terraform-key.pem")}"
     # public_key = file("/home/ubuntu/terraform-key.pem")
-    agent = false
+    agent = true
   }
 
   tags = {
