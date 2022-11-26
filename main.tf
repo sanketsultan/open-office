@@ -70,7 +70,7 @@ user_data = "${file("temp.sh")}"
   #   type        = "ssh"
   #   user        = "ubuntu"  
   #   host        = self.public_ip
-  #   private_key = file("/home/ubuntu/terraform-key.pem")
+  #   private_key = file("terraform-key.pem")
   #   # public_key = file("/home/ubuntu/terraform-key.pem")
   #   #agent = true
   # }
