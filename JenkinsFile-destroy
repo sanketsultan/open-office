@@ -24,8 +24,8 @@ pipeline {
         }
         stage('Terraform destroy') {
             steps {
-                echo 'Terraform action from the parameter is ---> destory'
-                sh label: '', script: 'terraform destory --auto-approve'
+                echo 'Terraform action from the parameter is ---> destroy'
+                sh label: '', script: 'terraform destroy --auto-approve'
             }
         }
     }
