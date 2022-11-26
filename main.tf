@@ -92,7 +92,7 @@ resource "aws_instance" "app_server" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get install git -y",
-      "git clone https://github.com/sanketsultan/open-office.git"
+      "git clone https://github.com/sanketsultan/open-office.git",
     ]
   }
 
