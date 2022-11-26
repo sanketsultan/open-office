@@ -82,8 +82,7 @@ user_data = <<-EOF
   # }
   # provisioner "remote-exec" {
   #   inline = [
-  #     "sudo apt-get install git -y",
-  #     "git clone https://github.com/sanketsultan/open-office.git",
+  #     "export Sanket=Failure"
   #   ]
   # }
 
