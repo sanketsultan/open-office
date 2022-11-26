@@ -65,20 +65,20 @@ resource "aws_instance" "app_server" {
   instance_type          = "t3.medium"
   key_name               = "terraform-key"
   vpc_security_group_ids = ["${aws_security_group.devops-project.id}"]
-  user_data              = file("temp.sh")
-  # connection {
-  #   type        = "ssh"
-  #   user        = "ubuntu"  
-  #   host        = self.public_ip
-  #   private_key = file("terraform-key.pem")
-  #   # public_key = file("/home/ubuntu/terraform-key.pem")
-  #   #agent = true
-  # }
-  # provisioner "remote-exec" {
-  #   inline = [
-  #     "export Sanket=Failure"
-  #   ]
-  # }
+  # user_data              = file("temp.sh")
+  connection {
+    type        = "ssh"
+    user        = "ubuntu"  
+    host        = self.public_ip
+    private_key = file("terraform-key.pem")
+    # public_key = file("/home/ubuntu/terraform-key.pem")
+    #agent = true
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "export Sanket=Failure"
+    ]
+  }
 
   tags = {
     Name = "open-office"
