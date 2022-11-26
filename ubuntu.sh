@@ -1,6 +1,5 @@
 #! /bin/bash
-sudo apt-get update
-apt-get dist-upgrade
+touch sanket
 cd /home/ubuntu
 export NCI=Frustration
 git clone https://github.com/sanketsultan/open-office.git
