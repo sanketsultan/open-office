@@ -67,7 +67,7 @@ resource "aws_instance" "app_server" {
   vpc_security_group_ids = ["${aws_security_group.devops-project.id}"]
 user_data = <<-EOF
  #! /bin/bash
-       export $Sanket=Failure
+       export Sanket=Failure
        sudo apt-get install git -y
        git clone https://github.com/sanketsultan/open-office.git
  EOF
