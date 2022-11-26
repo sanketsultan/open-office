@@ -67,27 +67,24 @@ resource "aws_instance" "app_server" {
   vpc_security_group_ids = ["${aws_security_group.devops-project.id}"]
 user_data = <<-EOF
  #! /bin/bash
-       cd /home/ubuntu
-       sudo apt-get install httpd -y
+       export $Sanket=Failure
        sudo apt-get install git -y
        git clone https://github.com/sanketsultan/open-office.git
-       sudo systemctl start httpd
-       sudo systemctl enable httpd
  EOF
-  connection {
-    type        = "ssh"
-    user        = "ubuntu"
-    host        = self.public_ip
-    private_key = "${file("./terraform-key.pem")}"
-    # public_key = file("/home/ubuntu/terraform-key.pem")
-    #agent = true
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt-get install git -y",
-      "git clone https://github.com/sanketsultan/open-office.git",
-    ]
-  }
+  # connection {
+  #   type        = "ssh"
+  #   user        = "ubuntu"
+  #   host        = self.public_ip
+  #   private_key = "${file("./terraform-key.pem")}"
+  #   # public_key = file("/home/ubuntu/terraform-key.pem")
+  #   #agent = true
+  # }
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "sudo apt-get install git -y",
+  #     "git clone https://github.com/sanketsultan/open-office.git",
+  #   ]
+  # }
 
   tags = {
     Name = "open-office"
