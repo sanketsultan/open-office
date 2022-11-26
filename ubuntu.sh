@@ -7,5 +7,5 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get install pip -y
 cd /home/ubuntu
 git clone https://github.com/sanketsultan/open-office.git
 cd open-office
-source .venv/bin/activate
-pip install -r requirements.txt
+# source .venv/bin/activate
+# pip install -r requirements.txt
