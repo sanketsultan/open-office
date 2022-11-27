@@ -1,7 +1,8 @@
 #! /bin/bash
 git clone https://github.com/sanketsultan/open-office.git
+sudo chmod a+rwx open-office
 cd open-office/
-python3 -m venv .venv
+sudo python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-python3 app.py &> logs.txt &
+sudo python3 app.py &> logs.txt &
