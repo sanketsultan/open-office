@@ -1,4 +1,5 @@
 #! /bin/bash
+sudo yum install git -y
 git clone https://github.com/sanketsultan/open-office.git
 sudo chmod a+rwx open-office
 cd open-office/
