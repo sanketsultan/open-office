@@ -7,12 +7,6 @@ pipeline {
     }
 
     stages {
-        // stage('Clone Repository'){
-        //     steps{
-        //        sh git clone https://github.com/sanketsultan/open-office.git
-        //        sh git checkout master
-        //     }
-        // }
         stage('Checkout') {
                     steps {
                         checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sanketsultan/open-office.git']]])
@@ -30,36 +24,24 @@ pipeline {
                 }
             }
         }
-        stage('SQuality Gate') {
+
+        stage('Terraform Init') {
             steps {
-                timeout(time: 1, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
+                sh label: '', script: 'terraform init'
             }
         }
-    // stage('Build') {
-    //     steps {
-    //         sh 'python3 -m py_compile app.py'
-    //         stash(name: 'compiled-results', includes: 'sources/*.py*')
-    //     }
-    // }
-    // stage('Terraform Init') {
-    //     steps {
-    //         sh label: '', script: 'terraform init'
-    //     }
-    // }
-    // stage('Terraform Plan') {
-    //     steps {
-    //         sh label: '', script: 'terraform plan'
-    //     }
-    // }
-    // stage('Terraform Apply') {
-    //     steps {
-    //         echo 'Terraform action from the parameter is --->destroy'
-    //         sh label: '', script: 'terraform destroy --auto-approve'
-    //         echo 'Terraform action from the parameter is --->apply'
-    //         sh label: '', script: 'terraform apply --auto-approve'
-    //     }
-    // }
+        stage('Terraform Plan') {
+            steps {
+                sh label: '', script: 'terraform plan'
+            }
+        }
+        stage('Terraform Apply') {
+            steps {
+                echo 'Terraform action from the parameter is --->destroy'
+                sh label: '', script: 'terraform destroy --auto-approve'
+                echo 'Terraform action from the parameter is --->apply'
+                sh label: '', script: 'terraform apply --auto-approve'
+            }
+        }
     }
 }
