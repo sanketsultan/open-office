@@ -25,7 +25,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv(credentialsId: 'd789c80c-a358-4e6d-b56c-fdada33ca1e6', installationName: 'SonarQube') {
-                    sh ''' $SCANNER_HOME/bin/sonar \
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner \
                 -Dsonar.projectKey=sonarqube-flask \
                 -Dsonar.sources=. '''
                 }
