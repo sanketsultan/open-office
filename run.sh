@@ -1,2 +1,2 @@
 #! /bin/bash
-setsid python3 app.py &
+setsid python3 app.py
