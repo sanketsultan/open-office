@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="8.696" timestamp="2022-11-28T03:27:26.654153" hostname="LAPTOP-MUBO2N49"><testcase classname="test_models.TestFlask" name="test_comic" time="0.022" /></testsuite></testsuites>
