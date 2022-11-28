@@ -99,7 +99,6 @@ resource "aws_instance" "app_server" {
     inline = [
       "sudo chmod 777 /home/ec2-user/aws-linux.sh",
       "sudo sh aws-linux.sh &> script.out",
-      "setsid python3 app.py &"
     ]
   }
 
