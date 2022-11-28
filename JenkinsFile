@@ -39,8 +39,8 @@ pipeline {
             steps {
                 echo 'Terraform action from the parameter is --->destroy'
                 sh label: '', script: 'terraform destroy --auto-approve'
-                echo 'Terraform action from the parameter is --->apply'
-                sh label: '', script: 'terraform apply --auto-approve'
+                // echo 'Terraform action from the parameter is --->apply'
+                // sh label: '', script: 'terraform apply --auto-approve'
             }
         }
     }
