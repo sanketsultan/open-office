@@ -100,6 +100,7 @@ resource "aws_instance" "app_server" {
     inline = [
       "sudo chmod 777 /home/ubuntu/ubuntu.sh",
       "/home/ubuntu/ubuntu.sh",
+      "nohup python /open-office/app.py",
       
     ]
   }
