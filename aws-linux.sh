@@ -7,5 +7,5 @@ sudo python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 pip install flask
-setsid flask run &
+flask run &
 echo "file executed successfully"
