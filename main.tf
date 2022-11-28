@@ -98,7 +98,8 @@ resource "aws_instance" "app_server" {
   provisioner "remote-exec" {
     inline = [
       "sudo chmod 777 /home/ec2-user/aws-linux.sh",
-      "sudo sh aws-linux.sh &> script.out &",
+      "sudo sh aws-linux.sh &> script.out",
+      "./run.sh > run.txt"
     ]
   }
 
