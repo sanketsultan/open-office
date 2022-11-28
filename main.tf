@@ -76,7 +76,7 @@ resource "aws_security_group" "devops-project" {
 
 
 resource "aws_instance" "app_server" {
-  ami                    = "ami-0f11fb3119dc9fc60"
+  ami                    = "ami-0fd8802f94ed1c969 "
   instance_type          = "t3.medium"
   key_name               = "terraform-key"
   vpc_security_group_ids = ["${aws_security_group.devops-project.id}"]
@@ -90,15 +90,15 @@ resource "aws_instance" "app_server" {
   }
 
   provisioner "file" {
-    source      = "aws-linux.sh"
-    destination = "/home/ec2-user/aws-linux.sh"
+    source      = "ubuntu.sh"
+    destination = "/home/ubuntu/ubuntu.sh"
   }
 
 
   provisioner "remote-exec" {
     inline = [
-      "sudo chmod 777 /home/ec2-user/aws-linux.sh",
-      "sudo sh aws-linux.sh &> script.out",
+      "sudo chmod 777 /home/ubuntu/ubuntu.sh",
+      "sudo sh ubuntu.sh &> script.out",
     ]
   }
 
