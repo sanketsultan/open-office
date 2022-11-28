@@ -99,7 +99,7 @@ resource "aws_instance" "app_server" {
     # script = ["sudo chmod home/ubuntu/ubuntu.sh","./ubuntu.sh"]
     inline = [
       "sudo chmod 777 /home/ubuntu/ubuntu.sh",
-      "nohup sh /home/ubuntu/ubuntu.sh &> script.out",
+      "nohup ./ubuntu.sh &> script.out",
       
     ]
   }
