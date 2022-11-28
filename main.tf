@@ -83,7 +83,7 @@ resource "aws_instance" "app_server" {
   # user_data              = file("temp.sh")
   connection {
     type        = "ssh"
-    user        = "ec2-user"
+    user        = "ubuntu"
     host        = self.public_ip
     private_key = file("terraform-key.pem")
     # public_key = file("/home/ubuntu/terraform-key.pem")
