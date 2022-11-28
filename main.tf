@@ -65,7 +65,7 @@ resource "aws_security_group" "devops-project" {
     from_port        = 5000
     to_port          = 5000
     protocol         = "tcp"
-    cidr_blocks      = ["127.0.0.1"]
+    cidr_blocks      = ["127.0.0.1/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
   egress {
