@@ -89,6 +89,10 @@ resource "aws_instance" "app_server" {
     # public_key = file("/home/ubuntu/terraform-key.pem")
   }
 
+  provisioner "file-1" {
+    source      = "ubuntu.sh"
+    destination = "/home/ubuntu/ubuntu.sh"
+  }
   provisioner "file" {
     source      = "ubuntu.sh"
     destination = "/home/ubuntu/ubuntu.sh"
