@@ -12,5 +12,5 @@ cd open-office/
 # virtualenv .venv
 # source .venv/bin/activate
 pip install -r requirements.txt
-nohup python open-office/app.py
+# nohup python open-office/app.py
 # python app.py
