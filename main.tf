@@ -90,8 +90,8 @@ resource "aws_instance" "app_server" {
   }
 
   provisioner "file" {
-    source      = "exec/"
-    destination = "/home/ubuntu/"
+    source      = "/exec"
+    destination = "/home/ubuntu"
   }
 
 
