@@ -101,8 +101,8 @@ resource "aws_instance" "app_server" {
       "sudo chmod 777 /home/ubuntu/ubuntu.sh",
       "/home/ubuntu/ubuntu.sh",
       "chmod +x /home/ubuntu/open-office/app.py",
-      "nohup python /home/ubuntu/open-office/app.py &",
-      "disown"
+      "setsid python /home/ubuntu/open-office/app.py &",
+      # "disown"
       # "python /home/ubuntu/open-office/app.py > /dev/null 2>&1 & disown"
     ]
   }
