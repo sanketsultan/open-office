@@ -16,6 +16,6 @@ pip install -r requirements.txt
 sudo cp /home/ubuntu/exec/open-office.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl start open-office.service
-sudo systemctl status open-office.service
+# sudo systemctl status open-office.service
 # nohup python open-office/app.py
 # python app.py
