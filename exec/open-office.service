@@ -1,5 +1,5 @@
 [Unit]
-Description=Gunicorn instance for a simple hello world app
+Description=Office-spaces 
 After=network.target
 [Service]
 User=ubuntu
