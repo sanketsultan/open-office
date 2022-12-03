@@ -97,24 +97,10 @@ resource "aws_instance" "app_server" {
 
   provisioner "remote-exec" {
     scripts = ["./exec/ubuntu.sh"]
-    # inline = [
-    #   "sudo chmod 777 /home/ubuntu/ubuntu.sh",
-    #   "/home/ubuntu/ubuntu.sh",
-    #   "chmod +x /home/ubuntu/open-office/app.py",
-    #   "setsid python /home/ubuntu/open-office/app.py &",
-    #   # "disown"
-    #   # "python /home/ubuntu/open-office/app.py > /dev/null 2>&1 & disown"
-    # ]
+   
   }
 
   tags = {
     Name = "open-office"
   }
 }
-
-
-# variable "docker-image" {
-#   type        = string
-#   description = "name of the docker image to deploy"
-#   default     = "vison91/office_spaces"
-# }
