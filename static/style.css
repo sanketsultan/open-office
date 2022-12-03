@@ -46,6 +46,21 @@ body {
   -webkit-appearance: none;
   appearance: none;
 }
+.button-container {
+  margin: 20px 0;
+}
+
+.button-container input {
+  background-color: #fff;
+  border: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 5px 15px 5px 15px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
 
 .input {
   background-color: #fff;
