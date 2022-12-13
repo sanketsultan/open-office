@@ -14,6 +14,6 @@ cd ML\ CA1/
 # virtualenv .venv
 # source .venv/bin/activate
 #pip install -r requirements.txt
-sudo cp /home/ubuntu/exec/open-office.service /etc/systemd/system/
+sudo cp /home/ubuntu/exec/sanket.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl start sanket.service
