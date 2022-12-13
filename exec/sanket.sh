@@ -13,7 +13,7 @@ cd ML_Deployment/
 cd ML\ CA1/
 # virtualenv .venv
 # source .venv/bin/activate
-pip install -r requirements.txt
+#pip install -r requirements.txt
 sudo cp /home/ubuntu/exec/open-office.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl start open-office.service
+sudo systemctl start sanket.service
