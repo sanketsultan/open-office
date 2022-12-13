@@ -8,8 +8,9 @@ sudo DEBIAN_FRONTEND=noninteractive apt install python3-virtualenv -y
 sudo DEBIAN_FRONTEND=noninteractive apt-get update -y
 sudo DEBIAN_FRONTEND=noninteractive apt-get install python3-pip -y
 sudo apt-get install git -y
-git clone https://github.com/sanketsultan/open-office.git
-cd open-office/
+https://github.com/Omkar0017/ML_Deployment.git
+cd ML_Deployment/
+cd ML\ CA1/
 # virtualenv .venv
 # source .venv/bin/activate
 pip install -r requirements.txt
