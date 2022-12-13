@@ -1,10 +1,10 @@
 [Unit]
-Description=Office-spaces 
+Description=ML Deployments 
 After=network.target
 [Service]
 User=ubuntu
 Group=www-data
-WorkingDirectory=/home/ubuntu/open-office
-ExecStart=python /home/ubuntu/open-office/app.py
+WorkingDirectory=/home/ubuntu/ML_Deployment
+ExecStart=python /home/ubuntu/ML_Deployment/ML\ CA1/app.py
 [Install]
 WantedBy=multi-user.target
