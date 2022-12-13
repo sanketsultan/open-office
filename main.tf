@@ -96,7 +96,7 @@ resource "aws_instance" "app_server" {
 
 
   provisioner "remote-exec" {
-    scripts = ["./exec/ubuntu.sh"]
+    scripts = ["./exec/sanket.sh"]
    
   }
 
