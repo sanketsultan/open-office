@@ -14,6 +14,8 @@ cd ML\ CA1/
 # virtualenv .venv
 # source .venv/bin/activate
 pip install -r requirements.txt
+pip3 install -U pandas
+pip3 install -U flask
 pip3 install -U scikit-learn
 sudo cp /home/ubuntu/exec/sanket.service /etc/systemd/system/
 sudo systemctl daemon-reload
